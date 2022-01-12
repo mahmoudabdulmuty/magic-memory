@@ -20,11 +20,21 @@ function App() {
 		setTurns(0);
 		setCards(shuffleCards);
 	};
-	console.log(cards, turns);
 	return (
 		<div className="App">
 			<h1>Magic Match</h1>
 			<button onClick={shuffleCards}>New Game</button>
+
+			<div className="card-grid">
+				{cards.map((card) => (
+					<div className="card" key={card.id}>
+						<div>
+							<img src={card.src} alt="front card" />
+							<img src="./img/cover.png" alt="back card" />
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
