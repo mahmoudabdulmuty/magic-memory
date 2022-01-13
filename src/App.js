@@ -38,7 +38,9 @@ function App() {
 			if (cardOne.src === cardTwo.src) {
 				setCards((prevCards) => {
 					return prevCards.map((card) => {
-						return card.src === cardOne.src ? { ...card, matched: true } : card;
+						return card.src === cardOne.src
+							? { ...card, matched: !card.matched }
+							: card;
 					});
 				});
 				resetTurn();
