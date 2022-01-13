@@ -18,6 +18,7 @@ function App() {
 	const [cardOne, setCardOne] = useState(null);
 	const [cardTwo, setCardTwo] = useState(null);
 
+	// shuffle cards for new game
 	const shuffleCards = () => {
 		const shuffleCards = [...magicCards, ...magicCards]
 			.sort(() => Math.random() - 0.5)
@@ -26,10 +27,12 @@ function App() {
 		setCards(shuffleCards);
 	};
 
+	// handle a choice
 	const handleChoice = (card) => {
 		cardOne ? setCardTwo(card) : setCardOne(card);
 	};
 
+	// compare 2 selected cards
 	useEffect(() => {
 		if (cardOne && cardTwo) {
 			if (cardOne.src === cardTwo.src) {
@@ -42,6 +45,7 @@ function App() {
 		}
 	}, [cardOne, cardTwo]);
 
+	// reset choices & increase turn
 	const resetTurn = () => {
 		setCardOne(null);
 		setCardTwo(null);
