@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Confetti from 'react-confetti';
 import './App.css';
 import SingleCard from './components/SingleCard';
 
@@ -69,12 +70,11 @@ function App() {
 	useEffect(() => {
 		shuffleCards();
 	}, []);
-
 	return (
 		<div className="App">
+			{cards.every((card) => card.matched) && <Confetti />}
 			<h1>Magic Match</h1>
 			<button onClick={shuffleCards}>New Game</button>
-
 			<div className="card-grid">
 				{cards.map((card) => (
 					<SingleCard
